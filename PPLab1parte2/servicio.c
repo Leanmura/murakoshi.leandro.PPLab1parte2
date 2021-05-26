@@ -41,3 +41,23 @@ int cargarDescripcionServicio(int idServicio, eServicio listaS[], int tamS, char
 
     return todoOk;
 }
+
+int cargarPrecioServicio(int idServicio, eServicio listaS[], int tamS, float *precio)
+{
+    int todoOk = 0;
+
+    if (listaS != NULL && tamS > 0 && idServicio >= 20000 && idServicio <= 20003)
+    {
+        for (int i = 0; i < tamS; i++)
+        {
+            if (idServicio == listaS[i].id)
+            {
+                *precio = listaS[i].precio;
+                todoOk = 1;
+                break;
+            }
+        }
+    }
+
+    return todoOk;
+}

@@ -172,7 +172,7 @@ int modificarAuto(eAuto lista[], int tam, eMarca listaM[], int tamM, eColor list
     int opcion = 0;
     eAuto auxAuto;
 
-    if (lista != NULL && tam >= 0)
+    if (lista != NULL && tam > 0 && listaM != NULL && tamM > 0 && listaC != NULL && tamC >0)
     {
         mostrarAutos(lista, tam, listaM, tamM, listaC, tamC);
         if (getString(patente, 20, 3, "Ingrese la patente del Auto: ", "Error. "))

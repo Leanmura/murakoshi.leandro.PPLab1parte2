@@ -42,3 +42,14 @@ void mostrarServicio(eServicio servicio);
  *
  */
 int cargarDescripcionServicio(int idServicio, eServicio listaS[], int tamS, char desc[]);
+
+/** \brief Nos da el precio de un servicio, pasandole id de algun servicio
+ *
+ * \param idServicio int ID del servicio
+ * \param listaS[] eServicio Vector de servicios
+ * \param tamS int Tamanio del servicio
+ * \param precio float* Puntero donde se devuelve el precio
+ * \return int Retorna 1 si esta todoOk, o 0 si hubo algun error(punteros a NULL o tamanios<=0)
+ *
+ */
+int cargarPrecioServicio(int idServicio, eServicio listaS[], int tamS, float *precio);

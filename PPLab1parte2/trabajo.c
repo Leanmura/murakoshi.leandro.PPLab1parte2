@@ -52,10 +52,10 @@ int altaTrabajo(eTrabajo lista[], int tam, int *pNextId, eServicio listaS[], int
                 fflush(stdin);
             }
             mostrarServicios(listaS, tamS);
-            if (getInt(&auxTrabajo.idServicio, 20000, 20003, INTENTOS, "Ingrese id de la Marca: ", "Error. "))
+            if (getInt(&auxTrabajo.idServicio, 20000, 20003, INTENTOS, "Ingrese id del servicio: ", "Error. "))
             {
-                eFecha fechaHoy = {19, 05, 2021 };
-                eFecha fechaMin = {01, 01, 2000};
+                eFecha fechaHoy = {FECHA_ACTUAL};
+                eFecha fechaMin = {FECHA_MIN};
                 if (getFecha(&auxTrabajo.fecha, fechaHoy, fechaMin, 3, "Ingresar la fecha de hoy(DD/MM/AAAA): ", "Error. ") == 1)
                 {
                     auxTrabajo.isEmpty = 0;

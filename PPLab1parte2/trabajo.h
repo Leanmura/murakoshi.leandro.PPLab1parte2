@@ -1,5 +1,7 @@
 #include "servicio.h"
 #include "auto.h"
+#define FECHA_ACTUAL 26,05,2021
+#define FECHA_MIN 01, 01, 2000
 
 #ifndef TRABAJO_H_INCLUDED
 #define TRABAJO_H_INCLUDED

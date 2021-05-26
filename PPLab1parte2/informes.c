@@ -26,7 +26,7 @@ int listarAutosUnColor(eAuto listaA[], int tamA, eColor listaC[], int tamC, eMar
             }
             if (flagAutoColor)
             {
-                printf("PATENTE     MARCA       COLOR      MODELO \n");
+                printf("\nPATENTE     MARCA       COLOR      MODELO \n");
                 for (int i = 0; i < tamA; i++)
                 {
                     if (!listaA[i].isEmpty && opcionIdColor == listaA[i].idColor)
@@ -73,7 +73,7 @@ int listarAutosUnaMarca(eAuto listaA[], int tamA, eColor listaC[], int tamC, eMa
             }
             if (flagAutoMarca)
             {
-                printf("PATENTE     MARCA       COLOR      MODELO \n");
+                printf("\nPATENTE     MARCA       COLOR      MODELO \n");
                 for (int i = 0; i < tamA; i++)
                 {
                     if (!listaA[i].isEmpty && opcionIdMarca == listaA[i].idMarca)
@@ -122,29 +122,26 @@ int listarAutosModeloMasViejo(eAuto listaA[], int tamA, eColor listaC[], int tam
     return todoOk;
 }
 
-int listarAutosPorColor(eAuto listaA[], int tamA, eColor listaC[], int tamC, eMarca listaM[], int tamM)
+int listarAutosPorMarca(eAuto listaA[], int tamA, eColor listaC[], int tamC, eMarca listaM[], int tamM)
 {
-    char color1[20];
-    char color2[20];
-    eAuto auxAuto;
     int todoOk = 0;
-
+    char marca[20];
     if (listaA != NULL && tamA > 0 && listaM != NULL && tamM > 0)
     {
-        for (int i = 0; i < tamA - 1; i++)
+        for (int j = 0; j < tamM; j++)
         {
-            for (int j = i; j < tamA; j++)
+            cargarDescripcionMarca(listaM[j].id, listaM, tamM, marca);
+            printf("\nAutos %s:\n", marca);
+            for (int i = 0; i < tamA; i++)
             {
-                cargarDescripcionColor(listaA[i].idColor, listaC, tamC, color1);
-                cargarDescripcionColor(listaA[j].idColor, listaC, tamC, color2);
-                if (strcmp(color1, color2) > 0)
+                if (listaA[i].idMarca == listaM[j].id)
                 {
-                    auxAuto = listaA[i];
-                    listaA[i] = listaA[j];
-                    listaA[j] = auxAuto;
+                    mostrarAuto(listaA[i], listaM, tamM, listaC, tamC);
                 }
             }
         }
+
+        printf("\n");
         todoOk = 1;
     }
     return todoOk;
@@ -179,54 +176,6 @@ int cantidadAutosMarcaColor(eAuto listaA[], int tamA, eColor listaC[], int tamC,
     return contador;
 }
 
-int colorMasElegidoPorClientes(eAuto listaA[], int tamA, eColor listaC[], int tamC, eMarca listaM[], int tamM)
-{
-    int contador[tamC];
-    int mayorCantidad;
-    int todoOk = 0;
-
-    for (int x = 0; x < tamC; x++)
-    {
-        contador[x] = 0;
-    }
-
-    if (listaA != NULL && tamA > 0 && listaC != NULL && tamC > 0 && listaM != NULL && tamM > 0)
-    {
-        for (int i = 0; i < tamA; i++)
-        {
-            for (int c = 0; c < tamC; c++)
-            {
-                if (!listaA[i].isEmpty && listaA[i].idColor == listaC[c].id)
-                {
-                    contador[c]++; // vector paralelo a listaC[]
-                    break;
-                }
-            }
-        }
-        for (int y = 0; y < tamC; y++)
-        {
-            //printf("Cantidad autos %s: %d\n", listaC[y].nombreColor, contador[y]);
-            if (y == 0 || mayorCantidad < contador[y])
-            {
-                mayorCantidad = contador[y]; // determino la cantidad de autos que tiene el color con mas autos
-            }
-        }
-
-        printf("COLOR MAS ELEGIDO POR LOS CLIENTES: ");
-
-        for (int y = 0; y < tamC; y++)
-        {
-            if (mayorCantidad == contador[y])
-            {
-                printf("%s ", listaC[y].nombreColor); // imprimo todos los colores que tienen la mayor cantidad de autos
-            }
-        }
-        printf("\n\n");
-        todoOk = 1;
-    }
-    return todoOk;
-}
-
 int marcaMasElegidaPorClientes(eAuto listaA[], int tamA, eColor listaC[], int tamC, eMarca listaM[], int tamM)
 {
     int contador[tamM];
@@ -253,7 +202,7 @@ int marcaMasElegidaPorClientes(eAuto listaA[], int tamA, eColor listaC[], int ta
         }
         for (int y = 0; y < tamM; y++)
         {
-            printf("Cantidad autos %s: %d\n", listaM[y].descripcion, contador[y]);
+            //printf("Cantidad autos %s: %d\n", listaM[y].descripcion, contador[y]);
             if (y == 0 || mayorCantidad < contador[y])
             {
                 mayorCantidad = contador[y]; // determino la cantidad de autos que tiene la marca con mas autos
@@ -271,6 +220,186 @@ int marcaMasElegidaPorClientes(eAuto listaA[], int tamA, eColor listaC[], int ta
         }
         printf("\n\n");
         todoOk = 1;
+    }
+    return todoOk;
+}
+
+int trabajosXAuto(eTrabajo listaT[], int tamT, eServicio listaS[], int tamS, eAuto listaA[], int tamA, eColor listaC[], int tamC, eMarca listaM[], int tamM)
+{
+    int todoOk;
+    char patente[20];
+    int indice;
+    int flag =0;
+    if(listaT != NULL && tamT > 0 && listaS != NULL && tamS > 0 && listaA != NULL && tamA > 0 && listaM != NULL && tamM > 0 && listaC != NULL && tamC >0)
+    {
+        mostrarAutos(listaA, tamA, listaM, tamM, listaC, tamC);
+        if (getString(patente, 20, 3, "Ingrese la patente del Auto: ", "Error. "))
+        {
+            indice = buscarAuto(listaA, tamA, patente);
+            if (indice != -1)
+            {
+
+                for(int t=0; t<tamT; t++)
+                {
+                    if(strcmp(listaT[t].patente, patente) == 0)
+                    {
+                        flag=1;
+                    }
+                }
+                if(flag)
+                {
+                    printf("\nPatente   Servicio   Fecha \n");
+                    for(int t=0; t<tamT; t++)
+                    {
+                        if(strcmp(listaT[t].patente, patente) == 0)
+                        {
+                            mostrarTrabajo(listaT[t], listaS, tamS);
+                        }
+                    }
+                }
+                else
+                {
+                    printf("No se le hicieron trabajos a este auto.\n");
+                }
+            }
+        }
+        printf("\n");
+        todoOk =1;
+    }
+    return todoOk;
+}
+
+int totalImporteXAuto(eTrabajo listaT[], int tamT, eServicio listaS[], int tamS, eAuto listaA[], int tamA, eColor listaC[], int tamC, eMarca listaM[], int tamM)
+{
+    int todoOk;
+    char patente[20];
+    int indice;
+    int flag =0;
+    float importe;
+    float totalImporte =0;
+    char desc[20];
+    if(listaT != NULL && tamT > 0 && listaS != NULL && tamS > 0 && listaA != NULL && tamA > 0 && listaM != NULL && tamM > 0 && listaC != NULL && tamC >0)
+    {
+        mostrarAutos(listaA, tamA, listaM, tamM, listaC, tamC);
+        if (getString(patente, 20, 3, "Ingrese la patente del Auto: ", "Error. "))
+        {
+            indice = buscarAuto(listaA, tamA, patente);
+            if (indice != -1)
+            {
+                for(int t=0; t<tamT; t++)
+                {
+                    if(strcmp(listaT[t].patente, patente) == 0)
+                    {
+                        cargarPrecioServicio(listaT[t].idServicio, listaS, tamS, &importe);
+                        cargarDescripcionServicio(listaT[t].idServicio, listaS, tamS, desc);
+                        printf("%s : %.2f\n", desc, importe);
+                        totalImporte = totalImporte + importe;
+                        flag=1;
+                    }
+                }
+                if(flag)
+                {
+                    printf("Importe total del auto: %.2f", totalImporte);
+                }
+                else
+                {
+                    printf("No se le hicieron trabajos a este auto.\n");
+                }
+            }
+        }
+        else
+        {
+            printf("Ha excedido el limite de intentos.\n");
+        }
+        printf("\n");
+        todoOk =1;
+    }
+    return todoOk;
+}
+
+int autosXServicio(eTrabajo listaT[], int tamT, eServicio listaS[], int tamS, eAuto listaA[], int tamA)
+{
+    int idServicio;
+    int todoOk =0;
+    int flag =0;
+    if(listaT != NULL && tamT > 0 && listaS != NULL && tamS > 0 && listaA != NULL && tamA > 0)
+    {
+        mostrarServicios(listaS,tamS);
+        if (getInt(&idServicio, 20000, 20003, INTENTOS, "Ingrese id del servicio: ", "Error. "))
+        {
+            for(int t=0; t<tamT; t++)
+            {
+                if(idServicio == listaT[t].idServicio)
+                {
+                    flag =1;
+                }
+            }
+            if(flag)
+            {
+                printf("\nPatente   Servicio   Fecha \n");
+                for(int t=0; t<tamT; t++)
+                {
+                    if(idServicio == listaT[t].idServicio)
+                    {
+                        mostrarTrabajo(listaT[t], listaS, tamS);
+                    }
+                }
+            }
+            else
+            {
+                printf("No se le hizo este servicio a ningun auto.\n");
+            }
+        }
+        else
+        {
+            printf("Ha excedido el limite de intentos.\n");
+        }
+        printf("\n");
+        todoOk =1;
+    }
+    return todoOk;
+}
+
+int serviciosXFecha(eTrabajo listaT[], int tamT, eServicio listaS[], int tamS, eAuto listaA[], int tamA)
+{
+    eFecha fecha;
+    int todoOk =0;
+    int flag =0;
+    if(listaT != NULL && tamT > 0 && listaS != NULL && tamS > 0 && listaA != NULL && tamA > 0)
+    {
+        eFecha fechaHoy = {FECHA_ACTUAL};
+        eFecha fechaMin = {FECHA_MIN};
+        if (getFecha(&fecha, fechaHoy, fechaMin, 3, "Ingresar la fecha de hoy(DD/MM/AAAA): ", "Error. ") == 1)
+        {
+            for(int t=0; t<tamT; t++)
+            {
+                if(fecha.anio == listaT[t].fecha.anio && fecha.mes == listaT[t].fecha.mes && fecha.dia ==  listaT[t].fecha.dia)
+                {
+                    flag =1;
+                }
+            }
+            if(flag)
+            {
+                printf("\nPatente   Servicio   Fecha \n");
+                for(int t=0; t<tamT; t++)
+                {
+                    if(fecha.anio == listaT[t].fecha.anio && fecha.mes == listaT[t].fecha.mes && fecha.dia ==  listaT[t].fecha.dia)
+                    {
+                        mostrarTrabajo(listaT[t], listaS, tamS);
+                    }
+                }
+            }
+            else
+            {
+                printf("No se le hizo ningun servicio en esta fecha.\n");
+            }
+        }
+        else
+        {
+            printf("Ha excedido el limite de intentos.\n");
+        }
+        printf("\n");
+        todoOk =1;
     }
     return todoOk;
 }

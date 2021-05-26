@@ -196,7 +196,7 @@ int main()
                 printf("--- ALTA TRABAJO ---\n");
                 printf("Id: #%d\n", nextIdTrabajo);
 
-                if (altaTrabajo(trabajos, TAMA, &nextIdTrabajo, servicios, TAMS, autos, TAMA, marcas, TAMM, colores, TAMC))
+                if (altaTrabajo(trabajos, TAMT, &nextIdTrabajo, servicios, TAMS, autos, TAMA, marcas, TAMM, colores, TAMC))
                 {
                     printf("Alta exitosa!!!\n\n");
                     flagTrabajo = 1;
@@ -236,7 +236,7 @@ int main()
             if(flag)
             {
                 menuInformes();
-                getInt(&opcionInformes, 1, 10, INTENTOS,"Ingrese lo que desea hacer: ", "Error. ");
+                getInt(&opcionInformes, 1, 11, INTENTOS,"Ingrese lo que desea hacer: ", "Error. ");
                 switch(opcionInformes)
                 {
                 case 1:
@@ -268,12 +268,8 @@ int main()
 
                 case 4:
                     system("cls");
-                    printf("--- LISTAR AUTOS POR COLOR ---\n");
-                    if(listarAutosPorColor(autos, TAMA, colores, TAMC, marcas, TAMM))
-                    {
-                        mostrarAutos(autos, TAMA, marcas, TAMM, colores, TAMC);
-                    }
-                    else
+                    printf("--- LISTAR AUTOS POR MARCA ---\n");
+                    if(!listarAutosPorMarca(autos, TAMA, colores, TAMC, marcas, TAMM))
                     {
                         printf("Hubo un error.\n\n");
                     }
@@ -290,7 +286,7 @@ int main()
 
                 case 6:
                     system("cls");
-                    if(!colorMasElegidoPorClientes(autos, TAMA, colores, TAMC, marcas, TAMM ))
+                    if(!marcaMasElegidaPorClientes(autos, TAMA, colores, TAMC, marcas, TAMM ))
                     {
                         printf("Hubo un error.\n\n");
                     }
@@ -298,13 +294,42 @@ int main()
 
                 case 7:
                     system("cls");
-                    if(!marcaMasElegidaPorClientes(autos, TAMA, colores, TAMC, marcas, TAMM ))
+                    printf("--- LISTAR TRABAJOS QUE SE LE HICIERON A UN AUTO ---\n\n");
+                    if(!trabajosXAuto(trabajos,TAMT, servicios, TAMS, autos ,TAMA, colores, TAMC, marcas, TAMM))
                     {
                         printf("Hubo un error.\n\n");
                     }
+
                     break;
 
                 case 8:
+                    system("cls");
+                    printf("--- SUMA DE IMPORTES QUE SE LE HICIERON A UN AUTO ---\n\n");
+                    if(!totalImporteXAuto(trabajos,TAMT, servicios, TAMS, autos ,TAMA, colores, TAMC, marcas, TAMM))
+                    {
+                        printf("Hubo un error.\n\n");
+                    }
+
+                    break;
+
+                case 9:
+                    system("cls");
+                    printf("--- AUTOS A LOS QUE SE LE REALIZO X SERVICIO ---\n");
+                    if(!autosXServicio(trabajos,TAMT, servicios, TAMS, autos ,TAMA))
+                    {
+                        printf("Hubo un error.\n\n");
+                    }
+
+                    break;
+
+                case 10:
+                    system("cls");
+                    printf("--- SERVICIOS REALIZADOS EN X FECHA ---\n");
+                    if(!serviciosXFecha(trabajos,TAMT, servicios, TAMS, autos ,TAMA))
+                    {
+                        printf("Hubo un error.\n\n");
+                    }
+
                     break;
 
                 }

@@ -33,10 +33,14 @@ void menuInformes()
     printf("1. Listar autos de un color\n");
     printf("2. Listar autos de una marca\n");
     printf("3. Listar autos mas viejos\n");
-    printf("4. Listar autos por color\n");
+    printf("4. Listar autos por marca\n");
     printf("5. Cantidad de autos de una marca y color\n");
-    printf("6. Color/es mas elegidos por los clientes\n");
+    printf("6. Marca/s mas elegidas por los clientes\n\n");
 
-    printf("7. Salir\n\n");
+    printf("7. Trabajos que se le hicieron a un auto\n");
+    printf("8. Suma de importes que se le hicieron a un auto\n");
+    printf("9. Autos a los que se le realizo un servicio\n");
+    printf("10. Servicios realizados en un dia\n");
+    printf("11. Salir\n\n");
 }
 

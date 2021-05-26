@@ -18,10 +18,6 @@ char nombres[10][20]={
 
 char sexos[10]={'f','m','f','f','m','f','f','f','m','m'};
 
-int edades[10]={17, 29, 16, 17, 17, 16, 20, 54, 21, 22};
-
-float sueldos[10]={30000, 15000, 100000, 50000, 130000, 40000, 60000, 80000, 80000, 170000};
-
 eFecha fechas[10] = {
     {1, 3, 2004},
     {2, 3, 2005},
@@ -35,33 +31,6 @@ eFecha fechas[10] = {
     {15, 6, 2000}
 
 };
-
-int id[10]={501, 504, 502, 504, 503, 504, 501, 504, 502, 504};
-
-/*int hardcodearEmpleados(eEmpleado lista[], int tam, int cant, int *pLegajo)
-{
-    int cantidad = 0;
-    if(lista != NULL && tam > 0 && cant >= 0 && cant <= tam && pLegajo != NULL)
-    {
-        for(int i=0; i<cant; i++)
-        {
-            lista[i].legajo = *pLegajo;
-            (*pLegajo)++;
-
-            strcpy(lista[i].nombre, nombres[i]);
-            lista[i].edad = edades[i];
-            lista[i].sexo = sexos[i];
-            lista[i].sueldo = sueldos[i];
-            lista[i].fIngreso = fechas[i];
-            lista[i].idSector = id[i];
-            lista[i].isEmpty = 0;
-            cantidad++;
-        }
-
-    }
-    return cantidad;
-}*/
-
 
 eFecha fechas2[] = {
     {1,1,2021},//6
@@ -89,35 +58,11 @@ eFecha fechas2[] = {
     {4,1,2021}
 };
 
-int legajos[] ={20000,20006,20001,20005,20007,20002,20000,20004,20001,20003,20008,20001,20006,20003,20004,20008,20005,20000,20005,20003,20007,20008,20004};
-
-int idComidas[]={1000,1003,1002,1000,1000,1004,1002,1001,1004,1003,1003,1004,1000,1002,1004,1004,1001,1001,1000,1001,1002,1002,1000};
-
-/*int hardcodearAlmuerzos(eAlmuerzo lista[], int tam, int cant, int *pId)
-{
-    int cantidad = 0;
-    if(lista != NULL && tam > 0 && cant >= 0 && cant <= tam && pId != NULL)
-    {
-        for(int i=0; i<cant; i++)
-        {
-            lista[i].id = *pId;
-            (*pId)++;
-            lista[i].idComida = idComidas[i];
-            lista[i].legEmpleado = legajos[i];
-            lista[i].fecha = fechas2[i];
-            lista[i].isEmpty = 0;
-            cantidad++;
-        }
-
-    }
-    return cantidad;
-}*/
-
 int idColor[]={5000,5001,5002,5003,5004,5004,5002,5003,5003,5001};
 
 int idMarca[]={1000,1001,1002,1003,1004,1002,1001,1000,1003,1002};
 
-int idServicio[]={20000,20001,20002,20003,20002,20003,20000,20000,20002,20001};
+int idServicio[]={20000,20001,20002,20002,20002,20001,20000,20000,20002,20001};
 
 int anio[] = {1990, 1992, 1999, 2000, 2003,2001,2000,1950, 2019,1950};
 
@@ -132,6 +77,21 @@ char patente[][20] = {
     "TYF342",
     "DFK145",
     "ERT573"
+};
+
+char patente2[][20] = {
+    "IHG579",
+    "ABC123",
+    "ABC231",
+    "DFK432",
+    "IHG579",
+    "ABC123",
+    "ABC231",
+    "DFK432",
+    "IHG579",
+    "ABC123",
+    "ABC231",
+    "DFK432",
 };
 
 int hardcodearAutos(eAuto lista[], int tam, int cant, int *pId)
@@ -166,7 +126,7 @@ int hardcodearTrabajos(eTrabajo lista[],int tam, int cant, int *pId)
             lista[i].id = *pId;
             (*pId)++;
             lista[i].idServicio = idServicio[i];
-            strcpy(lista[i].patente, patente[i]);
+            strcpy(lista[i].patente, patente2[i]);
             lista[i].isEmpty = 0;
             cantidad++;
         }

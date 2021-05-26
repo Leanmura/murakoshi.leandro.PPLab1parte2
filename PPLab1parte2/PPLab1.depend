@@ -57,3 +57,111 @@
 	<stdlib.h>
 	<string.h>
 
+1622034713 source:e:\tecnicatura en programacion\programacion i\murakoshi.leandro.pplab1parte2\pplab1parte2\auto.c
+	"auto.h"
+
+1621981366 e:\tecnicatura en programacion\programacion i\murakoshi.leandro.pplab1parte2\pplab1parte2\auto.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"marca.h"
+	"color.h"
+	"inputs_lean.h"
+	"menus.h"
+
+1621981927 e:\tecnicatura en programacion\programacion i\murakoshi.leandro.pplab1parte2\pplab1parte2\marca.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1621981943 e:\tecnicatura en programacion\programacion i\murakoshi.leandro.pplab1parte2\pplab1parte2\color.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1621423633 e:\tecnicatura en programacion\programacion i\murakoshi.leandro.pplab1parte2\pplab1parte2\inputs_lean.h
+	"fecha.h"
+
+1621205351 e:\tecnicatura en programacion\programacion i\murakoshi.leandro.pplab1parte2\pplab1parte2\fecha.h
+
+1621981579 e:\tecnicatura en programacion\programacion i\murakoshi.leandro.pplab1parte2\pplab1parte2\menus.h
+	<stdio.h>
+	<stdlib.h>
+
+1621981279 source:e:\tecnicatura en programacion\programacion i\murakoshi.leandro.pplab1parte2\pplab1parte2\color.c
+	"color.h"
+
+1622037504 source:e:\tecnicatura en programacion\programacion i\murakoshi.leandro.pplab1parte2\pplab1parte2\datawarehouse.c
+	"dataWareHouse.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1621985197 e:\tecnicatura en programacion\programacion i\murakoshi.leandro.pplab1parte2\pplab1parte2\datawarehouse.h
+	"fecha.h"
+	"auto.h"
+	"trabajo.h"
+
+1622031965 e:\tecnicatura en programacion\programacion i\murakoshi.leandro.pplab1parte2\pplab1parte2\trabajo.h
+	"servicio.h"
+	"auto.h"
+
+1622038123 e:\tecnicatura en programacion\programacion i\murakoshi.leandro.pplab1parte2\pplab1parte2\servicio.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1621200956 source:e:\tecnicatura en programacion\programacion i\murakoshi.leandro.pplab1parte2\pplab1parte2\fecha.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"fecha.h"
+
+1622038247 source:e:\tecnicatura en programacion\programacion i\murakoshi.leandro.pplab1parte2\pplab1parte2\informes.c
+	"informes.h"
+
+1622038480 e:\tecnicatura en programacion\programacion i\murakoshi.leandro.pplab1parte2\pplab1parte2\informes.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"inputs_lean.h"
+	"auto.h"
+	"marca.h"
+	"color.h"
+	"trabajo.h"
+	"servicio.h"
+
+1621371362 source:e:\tecnicatura en programacion\programacion i\murakoshi.leandro.pplab1parte2\pplab1parte2\inputs_lean.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"inputs_lean.h"
+
+1622038247 source:e:\tecnicatura en programacion\programacion i\murakoshi.leandro.pplab1parte2\pplab1parte2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"fecha.h"
+	"inputs_lean.h"
+	"marca.h"
+	"auto.h"
+	"color.h"
+	"menus.h"
+	"dataWareHouse.h"
+	"servicio.h"
+	"trabajo.h"
+	"informes.h"
+
+1621981248 source:e:\tecnicatura en programacion\programacion i\murakoshi.leandro.pplab1parte2\pplab1parte2\marca.c
+	"marca.h"
+
+1622037975 source:e:\tecnicatura en programacion\programacion i\murakoshi.leandro.pplab1parte2\pplab1parte2\menus.c
+	"menus.h"
+
+1622036345 source:e:\tecnicatura en programacion\programacion i\murakoshi.leandro.pplab1parte2\pplab1parte2\servicio.c
+	"servicio.h"
+
+1622037074 source:e:\tecnicatura en programacion\programacion i\murakoshi.leandro.pplab1parte2\pplab1parte2\trabajo.c
+	"trabajo.h"
+
